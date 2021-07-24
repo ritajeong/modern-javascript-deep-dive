@@ -125,26 +125,26 @@
 
 // ```javascript
 // // 월을 영어로 변환한다. (11 → 'November')
-// var month = 11;
-// var monthName;
+var month = 11;
+var monthName;
 
-// switch (month) {
-//   case 1: monthName = 'January';
-//   case 2: monthName = 'February';
-//   case 3: monthName = 'March';
-//   case 4: monthName = 'April';
-//   case 5: monthName = 'May';
-//   case 6: monthName = 'June';
-//   case 7: monthName = 'July';
-//   case 8: monthName = 'August';
-//   case 9: monthName = 'September';
-//   case 10: monthName = 'October';
-//   case 11: monthName = 'November';
-//   case 12: monthName = 'December';
-//   default: monthName = 'Invalid month';
-// }
+switch (month) {
+  case 1: monthName = 'January';
+  case 2: monthName = 'February';
+  case 3: monthName = 'March';
+  case 4: monthName = 'April';
+  case 5: monthName = 'May';
+  case 6: monthName = 'June';
+  case 7: monthName = 'July';
+  case 8: monthName = 'August';
+  case 9: monthName = 'September';
+  case 10: monthName = 'October';
+  case 11: monthName = 'November';
+  case 12: monthName = 'December';
+  default: monthName = 'Invalid month';
+}
 
-// console.log(monthName); // Invalid month
+console.log(monthName); // Invalid month. 폴스루(fall through). break문의 부재
 // ```
 
 // # 08-10
@@ -200,10 +200,10 @@
 //     days = 30;
 //     break;
 //   case 2:
-//     // 윤년 계산 알고리즘
-//     // 1. 연도가 4로 나누어떨어지는 해(2000, 2004, 2008, 2012, 2016, 2020...)는 윤년이다.
-//     // 2. 연도가 4로 나누어떨어지더라도 연도가 100으로 나누어떨어지는 해(2000, 2100, 2200...)는 평년이다.
-//     // 3. 연도가 400으로 나누어떨어지는 해(2000, 2400, 2800...)는 윤년이다.
+    // 윤년 계산 알고리즘
+    // 1. 연도가 4로 나누어떨어지는 해(2000, 2004, 2008, 2012, 2016, 2020...)는 윤년이다.
+    // 2. 연도가 4로 나누어떨어지더라도 연도가 100으로 나누어떨어지는 해(2000, 2100, 2200...)는 평년이다.
+    // 3. 연도가 400으로 나누어떨어지는 해(2000, 2400, 2800...)는 윤년이다.
 //     days = ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) ? 29 : 28;
 //     break;
 //   default:
@@ -213,7 +213,7 @@
 // console.log(days); // 29
 // ```
 
-// # 08-12
+// # 08-10 반복문( 배열 순회 forEach 27.9.2절, 객체의 프로퍼티 열거 for...in 19.14.1, 이터러블 순회 for...of 34.3절)
 
 // ```javascript
 // for (var i = 0; i < 2; i++) {
@@ -246,7 +246,7 @@
 // }
 // ```
 
-// # 08-16
+// # 08-16 for문 : 반복회수가 명확할때, while문 : 명확하지 않을때
 
 // ```javascript
 // var count = 0;
@@ -302,36 +302,36 @@
 // # 08-21
 
 // ```javascript
-// // foo라는 레이블 식별자가 붙은 레이블 문
-// foo: console.log('foo');
+// foo라는 레이블 식별자가 붙은 레이블 문
+foo: console.log('foo');
 // ```
 
 // # 08-22
 
 // ```javascript
-// // foo라는 식별자가 붙은 레이블 블록문
-// foo: {
-//   console.log(1);
-//   break foo; // foo 레이블 블록문을 탈출한다.
-//   console.log(2);
-// }
+// foo라는 식별자가 붙은 레이블 블록문
+foo: {
+  console.log(1);
+  break foo; // foo 레이블 블록문을 탈출한다.
+  console.log(2);
+}
 
-// console.log('Done!');
+console.log('Done!');
 // ```
 
 // # 08-23
 
 // ```javascript
-// // outer라는 식별자가 붙은 레이블 for 문
-// outer: for (var i = 0; i < 3; i++) {
-//   for (var j = 0; j < 3; j++) {
-//     // i + j === 3이면 outer라는 식별자가 붙은 레이블 for 문을 탈출한다.
-//     if (i + j === 3) break outer;
-//     console.log(`inner [${i}, ${j}]`);
-//   }
-// }
+// outer라는 식별자가 붙은 레이블 for 문. (레이블 문은 중첩된 for문 외부로 탈출할 때는 유용하지만 그 밖의 경우에는 일반적으로 권장하지 않는다. )
+outer: for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+    // i + j === 3이면 outer라는 식별자가 붙은 레이블 for 문을 탈출한다.
+    if (i + j === 3) break outer;
+    console.log(`inner [${i}, ${j}]`);
+  }
+}
 
-// console.log('Done!');
+console.log('Done!');
 // ```
 
 // # 08-24
@@ -359,22 +359,22 @@
 // # 08-25
 
 // ```javascript
-// var string = 'Hello World.';
-// var search = 'l';
-// var count = 0;
+var string = 'Hello World.';
+var search = 'l';
+var count = 0;
 
-// // 문자열은 유사배열이므로 for 문으로 순회할 수 있다.
-// for (var i = 0; i < string.length; i++) {
-//   // 'l'이 아니면 현 지점에서 실행을 중단하고 반복문의 증감식으로 이동한다.
-//   if (string[i] !== search) continue;
-//   count++; // continue 문이 실행되면 이 문은 실행되지 않는다.
-// }
+// 문자열은 유사배열이므로 for 문으로 순회할 수 있다.
+for (var i = 0; i < string.length; i++) {
+  // 'l'이 아니면 현 지점에서 실행을 중단하고 반복문의 증감식으로 이동한다.
+  if (string[i] !== search) continue;
+  count++; // continue 문이 실행되면 이 문은 실행되지 않는다. (이 예제에서는 한줄이라 8-26과 같이 써도 무방하지만, 이 부분이 길어진다면 continue 사용을 권장(8-27참고))
+}
 
-// console.log(count); // 3
+console.log(count); // 3
 
-// // 참고로 String.prototype.match 메서드를 사용해도 같은 동작을 한다.
-// const regexp = new RegExp(search, 'g');
-// console.log(string.match(regexp).length); // 3
+// 참고로 String.prototype.match 메서드를 사용해도 같은 동작을 한다.
+const regexp = new RegExp(search, 'g');
+console.log(string.match(regexp).length); // 3
 // ```
 
 // # 08-26
@@ -389,25 +389,25 @@
 // # 08-27
 
 // ```javascript
-// // continue 문을 사용하지 않으면 if 문 내에 코드를 작성해야 한다.
-// for (var i = 0; i < string.length; i++) {
-//   // 'l'이면 카운트를 증가시킨다.
-//   if (string[i] === search) {
-//     count++;
-//     // code
-//     // code
-//     // code
-//   }
-// }
+// continue 문을 사용하지 않으면 if 문 내에 코드를 작성해야 한다.
+for (var i = 0; i < string.length; i++) {
+  // 'l'이면 카운트를 증가시킨다.
+  if (string[i] === search) {
+    count++;
+    // code
+    // code
+    // code
+  }
+}
 
-// // continue 문을 사용하면 if 문 밖에 코드를 작성할 수 있다.
-// for (var i = 0; i < string.length; i++) {
-//   // 'l'이 아니면 카운트를 증가시키지 않는다.
-//   if (string[i] !== search) continue;
+// continue 문을 사용하면 if 문 밖에 코드를 작성할 수 있다.
+for (var i = 0; i < string.length; i++) {
+  // 'l'이 아니면 카운트를 증가시키지 않는다.
+  if (string[i] !== search) continue;
 
-//   count++;
-//   // code
-//   // code
-//   // code
-// }
+  count++;
+  // code
+  // code
+  // code
+}
 // ```
