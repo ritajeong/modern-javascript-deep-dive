@@ -173,8 +173,8 @@
 // ```javascript
 // var x;
 
-// // 할당문은 표현식인 문이다.
-// console.log(x = 10); // 10
+// 할당문은 표현식인 문이다.
+console.log(x = 10); // 10
 // ```
 
 // # 07-11
@@ -182,7 +182,7 @@
 // ```javascript
 // var a, b, c;
 
-// // 연쇄 할당. 오른쪽에서 왼쪽으로 진행.
+// 연쇄 할당. 오른쪽에서 왼쪽으로 진행.
 // // ① c = 0 : 0으로 평가된다
 // // ② b = 0 : 0으로 평가된다
 // // ③ a = 0 : 0으로 평가된다
@@ -194,31 +194,31 @@
 // # 07-12
 
 // ```javascript
-// // 동등 비교
-// 5 == 5; // -> true
+// 동등 비교 : 값이 같다. 
+5 == 5; // -> true
 
-// // 타입은 다르지만 암묵적 타입 변환을 통해 타입을 일치시키면 동등하다.
-// 5 == '5'; // -> true
+// 타입은 다르지만 암묵적 타입 변환을 통해 타입을 일치시키면 동등하다.(먼저 암묵적 타입변환을 통해 타입을 일치시킨 후 같은 값인지 비교한다. )
+5 == '5'; // -> true
 // ```
 
 // # 07-13
 
 // ```javascript
-// // 동등 비교. 결과를 예측하기 어렵다.
-// '0' == ''; // -> false
-// 0 == '';   // -> true
-// 0 == '0';  // -> true
-// false == 'false';   // -> false
-// false == '0';       // -> true
-// false == null;      // -> false
-// false == undefined; // -> false
+// 동등 비교. 결과를 예측하기 어렵다. => 안티패턴
+'0' == ''; // -> false
+0 == '';   // -> true
+0 == '0';  // -> true
+false == 'false';   // -> false
+false == '0';       // -> true
+false == null;      // -> false
+false == undefined; // -> false
 // ```
 
 // # 07-14
 
 // ```javascript
-// // 일치 비교
-// 5 === 5; // -> true
+// 일치 비교 : 값과 타입이 같다. 
+5 === 5; // -> true
 
 // // 암묵적 타입 변환을 하지 않고 값을 비교한다.
 // // 즉, 값과 타입이 모두 같은 경우만 true를 반환한다.
@@ -228,35 +228,35 @@
 // # 07-15
 
 // ```javascript
-// // NaN은 자신과 일치하지 않는 유일한 값이다.
-// NaN === NaN; // -> false
+// NaN은 자신과 일치하지 않는 유일한 값이다.
+NaN === NaN; // -> false
 // ```
 
 // # 07-16
 
 // ```javascript
-// // isNaN 함수는 지정한 값이 NaN인지 확인하고 그 결과를 불리언 값으로 반환한다.
-// isNaN(NaN); // -> true
-// isNaN(10);  // -> false
-// isNaN(1 + undefined); // -> true
+// isNaN 함수는 지정한 값이 NaN인지 확인하고 그 결과를 불리언 값으로 반환한다.
+isNaN(NaN); // -> true
+isNaN(10);  // -> false
+isNaN(1 + undefined); // -> true
 // ```
 
 // # 07-17
 
 // ```javascript
-// // 양의 0과 음의 0의 비교. 일치 비교/동등 비교 모두 결과는 true이다.
-// 0 === -0; // -> true
-// 0 == -0;  // -> true
+// 양의 0과 음의 0의 비교. 일치 비교/동등 비교 모두 결과는 true이다.
+0 === -0; // -> true
+0 == -0;  // -> true
 // ```
 
 // # 07-18
 
 // ```javascript
-// -0 === +0;         // -> true
-// Object.is(-0, +0); // -> false
+-0 === +0;         // -> true
+Object.is(-0, +0); // -> false
 
-// NaN === NaN;         // -> false
-// Object.is(NaN, NaN); // -> true
+NaN === NaN;         // -> false
+Object.is(NaN, NaN); // -> true
 // ```
 
 // # 07-19
@@ -267,11 +267,11 @@
 // 5 != 5;   // -> false
 // 5 != '5'; // -> false
 
-// // 불일치 비교
-// 5 !== 8;   // -> true
+// // 불일치 비교 : 값이 다르거나, 타입이 다르거나 둘 다 다를 때 -> true
+5 !== 8;   // -> true 값이 다름
 // 5 !== 5;   // -> false
-// 5 !== '5'; // -> true
-// ```
+5 !== '5'; // -> true 타입이 다름
+// ``` 
 
 // # 07-20
 
@@ -288,8 +288,8 @@
 // ```javascript
 // var x = 2;
 
-// // 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.
-// var result = x % 2 ? '홀수' : '짝수';
+// 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.
+var result = x % 2 ? '홀수' : '짝수';
 
 // console.log(result); // 짝수
 // ```
@@ -299,9 +299,9 @@
 // ```javascript
 // var x = 2, result;
 
-// // 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.
-// if (x % 2) result = '홀수';
-// else       result = '짝수';
+// 2 % 2는 0이고 0은 false로 암묵적 타입 변환된다.
+if (x % 2) result = '홀수';
+else       result = '짝수';
 
 // console.log(result); // 짝수
 // ```
@@ -349,16 +349,16 @@
 // # 07-26
 
 // ```javascript
-// // 암묵적 타입 변환
-// !0;       // -> true
-// !'Hello'; // -> false
+// 암묵적 타입 변환
+!0;       // -> true
+!'Hello'; // -> false
 // ```
 
 // # 07-27
 
 // ```javascript
-// // 단축 평가
-// 'Cat' && 'Dog'; // -> 'Dog'
+// 단축 평가
+'Cat' && 'Dog'; // -> 'Dog'
 // ```
 
 // # 07-28
@@ -371,9 +371,9 @@
 // # 07-29
 
 // ```javascript
-// var x, y, z;
+var x, y, z;
 
-// x = 1, y = 2, z = 3; // 3
+x = 1, y = 2, z = 3; // 3을 반환한다. 쉼표연산자 : 마지막 피연산자의 평가가 끝나면 마지막 피연산자의 평가결과를 반환환다. 
 // ```
 
 // # 07-30
@@ -394,7 +394,7 @@
 // typeof true            // -> "boolean"
 // typeof undefined       // -> "undefined"
 // typeof Symbol()        // -> "symbol"
-// typeof null            // -> "object"
+typeof null            // -> "object" http://2ality.com/2013/10/typeof-null.html typeof 연산자로 null을 연산해보면 "object"가 반환됨. js의 첫번째 버그
 // typeof []              // -> "object"
 // typeof {}              // -> "object"
 // typeof new Date()      // -> "object"
@@ -405,22 +405,22 @@
 // # 07-32
 
 // ```javascript
-// var foo = null;
+var foo = null;
 
-// typeof foo === null; // -> false
-// foo === null;        // -> true
+typeof foo === null; // -> false 
+foo === null;        // -> true. 값이 null타입인지 확인할 때는 typeof연산자를 사용하지 말고 일치 연산자(===)를 사용하자. 
 // ```
 
 // # 07-33
 
 // ```javascript
-// // undeclared 식별자를 선언한 적이 없다.
-// typeof undeclared; // -> undefined
+// undeclared 식별자를 선언한 적이 없다. (선언하지 않은 식별자를 typeof 연산자로 연샌하보면 ReferenceError가 발생하지 않고 undefined를 반환한다. )
+typeof undeclared; // -> undefined
 // ```
 
-// # 07-34
+// # 07-34 ES7 지수연산자. 이전에는 Math.pow() 사용
 
-// ```javascript
+// ```javascript 
 // 2 ** 2;   // -> 4
 // 2 ** 2.5; // -> 5.65685424949238
 // 2 ** 0;   // -> 1
